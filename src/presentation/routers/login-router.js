@@ -5,9 +5,13 @@ class LoginRouter {
     this.authUseCase = authUseCase;
   }
   route(httpRequest) {
-    if (!httpRequest) return HttpResponse.serverError();
-
-    if (!httpRequest.body) return { statusCode: 500 };
+    if (
+      !httpRequest ||
+      !httpRequest.body ||
+      !this.authUseCase ||
+      !this.authUseCase.auth
+    )
+      return HttpResponse.serverError();
 
     const { email, password } = httpRequest.body;
 
