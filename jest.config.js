@@ -1,3 +1,6 @@
 module.exports = {
-  coverageProvider: "v8",
+  coverageProvider: "coverage",
+  testEnvironment: "node",
+  collectCoverageFrom: ["**/src/**/*.js", "!**/src/main/**"],
+  preset: "@shelf/jest-mongodb",
 };
